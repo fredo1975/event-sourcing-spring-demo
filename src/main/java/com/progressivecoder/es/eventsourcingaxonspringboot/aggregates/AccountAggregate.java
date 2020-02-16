@@ -1,14 +1,19 @@
 package com.progressivecoder.es.eventsourcingaxonspringboot.aggregates;
 
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.modelling.command.AggregateLifecycle;
+import org.axonframework.spring.stereotype.Aggregate;
+
 import com.progressivecoder.es.eventsourcingaxonspringboot.commands.CreateAccountCommand;
 import com.progressivecoder.es.eventsourcingaxonspringboot.commands.CreditMoneyCommand;
 import com.progressivecoder.es.eventsourcingaxonspringboot.commands.DebitMoneyCommand;
-import com.progressivecoder.es.eventsourcingaxonspringboot.events.*;
-import org.axonframework.commandhandling.CommandHandler;
-import org.axonframework.commandhandling.model.AggregateIdentifier;
-import org.axonframework.commandhandling.model.AggregateLifecycle;
-import org.axonframework.eventsourcing.EventSourcingHandler;
-import org.axonframework.spring.stereotype.Aggregate;
+import com.progressivecoder.es.eventsourcingaxonspringboot.events.AccountActivatedEvent;
+import com.progressivecoder.es.eventsourcingaxonspringboot.events.AccountCreatedEvent;
+import com.progressivecoder.es.eventsourcingaxonspringboot.events.AccountHeldEvent;
+import com.progressivecoder.es.eventsourcingaxonspringboot.events.MoneyCreditedEvent;
+import com.progressivecoder.es.eventsourcingaxonspringboot.events.MoneyDebitedEvent;
 
 @Aggregate
 public class AccountAggregate {
@@ -42,7 +47,8 @@ public class AccountAggregate {
 
     @EventSourcingHandler
     protected void on(AccountActivatedEvent accountActivatedEvent){
-        this.status = String.valueOf(accountActivatedEvent.status);
+    	throw new NullPointerException();
+        //this.status = String.valueOf(accountActivatedEvent.status);
     }
 
     @CommandHandler

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.CompletableFuture;
 
+import javax.transaction.Transactional;
+
 @RestController
 @RequestMapping(value = "/bank-accounts")
 @Api(value = "Account Commands", description = "Account Commands Related Endpoints", tags = "Account Commands")
@@ -21,6 +23,7 @@ public class AccountCommandController {
     }
 
     @PostMapping
+    @Transactional
     public CompletableFuture<String> createAccount(@RequestBody AccountCreateDTO accountCreateDTO){
         return accountCommandService.createAccount(accountCreateDTO);
     }
